@@ -1,15 +1,23 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   images: {
-    domains: ["localhost"],
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "cdn.sanity.io",
-        port: "",
-      },
-    ],
+    dangerouslyAllowSVG: true,
+    domains: ["cdn.sanity.io"]
   },
+  async redirects() {
+    return [
+      // delete this object if you have a landing page
+      // and you do not want the home / index page to be redirected
+      {
+        source: "/",
+        destination: "/docs/intro",
+        permanent: true
+      },
+      // navigate /docs to the intro page.
+      {
+        source: "/docs",
+        destination: "/docs/intro",
+        permanent: true
+      }
+    ];
+  }
 };
-
-module.exports = nextConfig;
