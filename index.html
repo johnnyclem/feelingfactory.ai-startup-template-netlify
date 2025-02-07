@@ -46,7 +46,7 @@
             fetch('whitepaper.md')
                 .then(response => response.text())
                 .then(text => {
-                    document.getElementById('whitepaper-content').innerHTML = marked.parse(text);
+                    document.getElementById('whitepaper-content').innerHTML = marked(text);
                 });
         });
     </script>
